@@ -1,4 +1,4 @@
-package com.geekbrains.lavsam.myfirstandroidapp;
+package com.geekbrains.lavsam.myjavatokotlin;
 
 import org.junit.Test;
 

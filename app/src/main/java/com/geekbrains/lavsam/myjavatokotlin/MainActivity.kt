@@ -1,4 +1,4 @@
-package com.geekbrains.lavsam.myfirstandroidapp
+package com.geekbrains.lavsam.myjavatokotlin
 
 import android.os.Bundle
 import android.util.Log

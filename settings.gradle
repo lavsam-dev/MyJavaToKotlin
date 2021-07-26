@@ -1,2 +1,2 @@
 include ':app'
-rootProject.name = "My First Android App"
+rootProject.name = "My Java To Kotlin"
