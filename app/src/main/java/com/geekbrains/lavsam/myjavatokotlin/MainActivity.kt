@@ -8,6 +8,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
+import com.geekbrains.lavsam.myjavatokotlin.data.Weather
 import com.geekbrains.lavsam.myjavatokotlin.repository.RepositorySingle
 
 class MainActivity : AppCompatActivity() {
@@ -27,11 +28,30 @@ class MainActivity : AppCompatActivity() {
         val copyButton = findViewById<Button>(R.id.btn_copy)
         copyButton.setOnClickListener { copyDigits() }
 
-
         recyclerWeather = findViewById(R.id.recyclerWeather)
         val adapter = WeatherAdapter(RepositorySingle)
         recyclerWeather.adapter = adapter
 
+        for(i in 1..10) {
+            Log.v("Digit Checker", "Hello Kotlin! " + i.toString())
+        }
+
+        val weatherList: List<Weather> = RepositorySingle.getWeathers()
+        for(weather in weatherList) {
+            Log.v("Digit Checker", weather.town + " " + weather.temperature)
+        }
+
+        for(i in 10 downTo 1 step 2) {
+            Log.v("Digit Checker", "Hello Kotlin! " + i.toString())
+        }
+
+        val weatherTown: String = "Самара"
+        for (i in 0 until weatherList.size) {
+            if (weatherList[i].town == weatherTown) {
+                Log.v("Digit Checker", weatherList[i].town + " " + weatherList[i].temperature)
+                return
+            }
+        }
     }
 
     private fun copyDigits(){
