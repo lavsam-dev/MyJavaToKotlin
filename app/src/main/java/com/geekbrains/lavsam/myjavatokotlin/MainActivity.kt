@@ -8,7 +8,9 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
+import com.geekbrains.lavsam.myjavatokotlin.data.CopyField
 import com.geekbrains.lavsam.myjavatokotlin.data.Weather
+import com.geekbrains.lavsam.myjavatokotlin.repository.RepositoryFieldSingle
 import com.geekbrains.lavsam.myjavatokotlin.repository.RepositorySingle
 
 class MainActivity : AppCompatActivity() {
@@ -19,10 +21,15 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         setContentView(R.layout.activity_digit_cheker)
         firstDigit = findViewById(R.id.first_digit)
         secondDigit = findViewById(R.id.second_digit)
         textResult = findViewById(R.id.text_result)
+        var copyField: CopyField = RepositoryFieldSingle.getFields()
+        firstDigit!!.setText(copyField.fieldFirst)
+        secondDigit!!.setText(copyField.fieldSecond)
+
         val compareButton = findViewById<Button>(R.id.btn_compare)
         compareButton.setOnClickListener { compareDigits() }
         val copyButton = findViewById<Button>(R.id.btn_copy)
@@ -49,9 +56,11 @@ class MainActivity : AppCompatActivity() {
         for (i in 0 until weatherList.size) {
             if (weatherList[i].town == weatherTown) {
                 Log.v("Digit Checker", weatherList[i].town + " " + weatherList[i].temperature)
-                return
+                break
             }
         }
+
+        Log.v("Digit Checker", copyField.fieldFirst + " " + copyField.fieldSecond)
     }
 
     private fun copyDigits(){
