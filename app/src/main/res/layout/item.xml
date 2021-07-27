@@ -10,6 +10,7 @@
 
         <TextView
             android:id="@+id/textCity"
+            android:paddingLeft="16dp"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="4"

@@ -21,14 +21,22 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_digit_cheker)
         firstDigit = findViewById(R.id.first_digit)
         secondDigit = findViewById(R.id.second_digit)
-        val compareButton = findViewById<Button>(R.id.btn_compare)
         textResult = findViewById(R.id.text_result)
+        val compareButton = findViewById<Button>(R.id.btn_compare)
         compareButton.setOnClickListener { compareDigits() }
+        val copyButton = findViewById<Button>(R.id.btn_copy)
+        copyButton.setOnClickListener { copyDigits() }
+
 
         recyclerWeather = findViewById(R.id.recyclerWeather)
         val adapter = WeatherAdapter(RepositorySingle)
         recyclerWeather.adapter = adapter
 
+    }
+
+    private fun copyDigits(){
+        secondDigit!!.setText(firstDigit!!.text)
+        textResult!!.text = "Copied"
     }
 
     private fun compareDigits() {
