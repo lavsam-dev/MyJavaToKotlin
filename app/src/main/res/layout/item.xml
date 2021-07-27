@@ -12,15 +12,15 @@
             android:id="@+id/textCity"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:textSize="32sp"/>
+            android:layout_weight="4"
+            android:textSize="24sp"/>
 
         <TextView
             android:id="@+id/textTemp"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:textSize="32sp"/>
+            android:textSize="24sp"/>
 
     </LinearLayout>
 
