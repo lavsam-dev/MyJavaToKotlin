@@ -79,7 +79,7 @@ class MainActivity : AppCompatActivity() {
             }
         } catch (exception: NumberFormatException) {
             textResult!!.text = "Please enter a digit!"
-            Log.v("Digit Checker", "User is minimally acceptional.")
+            Log.v("Digit Checker", "User is minimally acceptional!")
         }
     }
 }
