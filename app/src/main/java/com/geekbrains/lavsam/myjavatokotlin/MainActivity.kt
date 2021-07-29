@@ -5,7 +5,6 @@ import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.geekbrains.lavsam.myjavatokotlin.data.CopyField
@@ -14,9 +13,9 @@ import com.geekbrains.lavsam.myjavatokotlin.repository.RepositoryFieldSingle
 import com.geekbrains.lavsam.myjavatokotlin.repository.RepositorySingle
 
 class MainActivity : AppCompatActivity() {
-    private var firstDigit: EditText? = null
-    private var secondDigit: EditText? = null
-    private var textResult: TextView? = null
+    private lateinit var firstDigit: EditText
+    private lateinit var secondDigit: EditText
+    private lateinit var textResult: TextView
     private lateinit var recyclerWeather: RecyclerView
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,9 +25,9 @@ class MainActivity : AppCompatActivity() {
         firstDigit = findViewById(R.id.first_digit)
         secondDigit = findViewById(R.id.second_digit)
         textResult = findViewById(R.id.text_result)
-        var copyField: CopyField = RepositoryFieldSingle.getFields()
-        firstDigit!!.setText(copyField.fieldFirst)
-        secondDigit!!.setText(copyField.fieldSecond)
+        val copyField: CopyField = RepositoryFieldSingle.getFields()
+        firstDigit.setText(copyField.fieldFirst)
+        secondDigit.setText(copyField.fieldSecond)
 
         val compareButton = findViewById<Button>(R.id.btn_compare)
         compareButton.setOnClickListener { compareDigits() }
@@ -40,46 +39,46 @@ class MainActivity : AppCompatActivity() {
         recyclerWeather.adapter = adapter
 
         for(i in 1..10) {
-            Log.v("Digit Checker", "Hello Kotlin! " + i.toString())
+            Log.v(getString(R.string.LogTag), getString(R.string.LogMsgKotlin) + " " + i.toString())
         }
 
         val weatherList: List<Weather> = RepositorySingle.getWeathers()
         for(weather in weatherList) {
-            Log.v("Digit Checker", weather.town + " " + weather.temperature)
+            Log.v(getString(R.string.LogTag), weather.town + " " + weather.temperature)
         }
 
         for(i in 10 downTo 1 step 2) {
-            Log.v("Digit Checker", "Hello Kotlin! " + i.toString())
+            Log.v(getString(R.string.LogTag), getString(R.string.LogMsgKotlin) + " " + i.toString())
         }
 
-        val weatherTown: String = "Самара"
-        for (i in 0 until weatherList.size) {
+        val weatherTown: String = getString(R.string.FindTown)
+        for (i in weatherList.indices) {
             if (weatherList[i].town == weatherTown) {
-                Log.v("Digit Checker", weatherList[i].town + " " + weatherList[i].temperature)
+                Log.v(getString(R.string.LogTag), weatherList[i].town + " " + weatherList[i].temperature)
                 break
             }
         }
 
-        Log.v("Digit Checker", copyField.fieldFirst + " " + copyField.fieldSecond)
+        Log.v(getString(R.string.LogTag), copyField.fieldFirst + " " + copyField.fieldSecond)
     }
 
     private fun copyDigits(){
-        secondDigit!!.setText(firstDigit!!.text)
-        textResult!!.text = "Copied"
+        secondDigit.text = firstDigit.text
+        textResult.text = getString(R.string.MsgCopied)
     }
 
     private fun compareDigits() {
         try {
-            val firstValue = Integer.valueOf(firstDigit!!.text.toString())
-            val secondValue = Integer.valueOf(secondDigit!!.text.toString())
+            val firstValue = Integer.valueOf(firstDigit.text.toString())
+            val secondValue = Integer.valueOf(secondDigit.text.toString())
             if (firstValue == secondValue) {
-                textResult!!.text = "Equal"
+                textResult.text = getString(R.string.MsgEqual)
             } else {
-                textResult!!.text = "Not Equal"
+                textResult.text = getString(R.string.MsgNotEqual)
             }
         } catch (exception: NumberFormatException) {
-            textResult!!.text = "Please enter a digit!"
-            Log.v("Digit Checker", "User is minimally acceptional!")
+            textResult.text = getString(R.string.MsgEnterDigit)
+            Log.v(getString(R.string.LogTag), getString(R.string.LogMsgUserBad))
         }
     }
 }
