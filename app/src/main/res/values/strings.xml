@@ -3,4 +3,12 @@
     <string name="copy">Copy</string>
     <string name="compare">Compare</string>
     <string name="equals">It\'s Equals!</string>
+    <string name="LogTag">My Java to Kotlin</string>
+    <string name="LogMsgKotlin">Hello Kotlin!</string>
+    <string name="LogMsgUserBad">User is minimally acceptional!</string>
+    <string name="MsgEnterDigit">Please enter a digit!</string>
+    <string name="MsgEqual">Equal</string>
+    <string name="MsgNotEqual">Not Equal</string>
+    <string name="MsgCopied">Copied</string>
+    <string name="FindTown">Самара</string>
 </resources>
